@@ -1,0 +1,136 @@
+job_description:
+  title: "Senior Software Engineer"
+  required_skills:
+    - "Python"
+    - "system design"
+    - "API development"
+  preferred_skills:
+    - "AWS/cloud experience"
+    - "team leadership"
+  selection_criteria: |
+    We value candidates who demonstrate:
+    1. Strong technical problem-solving ability
+    2. Clear communication in written and verbal form
+    3. Track record of shipping products to production
+    4. Alignment with our collaborative, inclusive culture
+    5. Growth mindset and continuous learning
+
+oracle:
+  required_skills: ["Python", "system design"]
+  min_years_experience: 5
+  noise_rate: 0.12
+
+dataset:
+  total: 200
+  train: 150
+  holdout: 50
+  hire_ratio: 0.35
+  batch_size: 10
+
+gepa:
+  max_iterations: 25
+  pareto_max_size: 20
+  checkpoint_every: 5
+  num_prompts: 5
+  worst_cases_k: 10
+  seed_candidates: 3
+  selection_strategy: "random"
+
+llm:
+  model_rollout: "anthropic.claude-3-5-sonnet-20241022-v2:0"
+  model_reflection: "anthropic.claude-3-5-sonnet-20241022-v2:0"
+  model_generation: "anthropic.claude-3-5-sonnet-20241022-v2:0"
+  max_tokens_rollout: 512
+  max_tokens_reflection: 1024
+  max_tokens_generation: 4096
+  max_retries: 3
+  timeout_seconds: 30
+  budget_hard_cap_usd: 100.0
+  budget_warn_threshold_usd: 80.0
+  max_calls_per_run: 10000
+
+baseline_prompts:
+  - name: "Technical Depth"
+    prompt: |
+      You are evaluating a software engineer applicant for a Senior SWE role.
+
+      Assess their TECHNICAL DEPTH based on the profile below.
+      Consider: years of relevant experience, depth in Python and core CS concepts,
+      evidence of system-level thinking, and complexity of past projects.
+
+      Score rubric:
+      1 = Beginner (<2 years, basic skills only)
+      2 = Junior (2-3 years, solid fundamentals)
+      3 = Mid-level (3-5 years, works independently)
+      4 = Senior (5-8 years, designs systems)
+      5 = Principal (8+ years, deep expertise, architects at scale)
+
+      Return ONLY valid JSON: {"score": <integer 1-5>, "rationale": "<2-3 sentences>"}
+
+  - name: "Problem-Solving Ability"
+    prompt: |
+      You are evaluating a software engineer applicant for a Senior SWE role.
+
+      Assess their PROBLEM-SOLVING ABILITY based on the profile below.
+      Consider: evidence of tackling complex challenges, creative solutions,
+      impact delivered, and ability to break down hard problems.
+
+      Score rubric:
+      1 = Struggles with complexity, needs extensive guidance
+      2 = Can solve defined problems, needs some direction
+      3 = Independently solves most problems
+      4 = Handles complex, novel problems; finds elegant solutions
+      5 = Exceptional: solves cutting-edge problems, mentors others
+
+      Return ONLY valid JSON: {"score": <integer 1-5>, "rationale": "<2-3 sentences>"}
+
+  - name: "Cultural Fit"
+    prompt: |
+      You are evaluating a software engineer applicant for a Senior SWE role.
+
+      Assess their alignment with our CULTURE based on the profile below.
+      Consider: evidence of collaboration, mentoring others, care for code quality,
+      learning from feedback, and alignment with our values of inclusivity and growth.
+
+      Score rubric:
+      1 = Appears to work in isolation, dismisses feedback
+      2 = Works with others, but limited collaborative impact
+      3 = Good team player, contributes positively
+      4 = Strong collaborator, mentors junior engineers, advocates for good practices
+      5 = Exceptional: role model for culture, builds strong teams, leads by example
+
+      Return ONLY valid JSON: {"score": <integer 1-5>, "rationale": "<2-3 sentences>"}
+
+  - name: "Communication Skills"
+    prompt: |
+      You are evaluating a software engineer applicant for a Senior SWE role.
+
+      Assess their COMMUNICATION SKILLS based on the profile below.
+      Consider: clarity of writing in resume/summaries, ability to explain complex topics,
+      documentation quality, and evidence of effective knowledge sharing.
+
+      Score rubric:
+      1 = Unclear writing, hard to understand intent
+      2 = Adequate writing, mostly understandable
+      3 = Clear and professional communication
+      4 = Excellent communicator, explains complexity clearly, strong writer
+      5 = Exceptional: influences through communication, thought leader
+
+      Return ONLY valid JSON: {"score": <integer 1-5>, "rationale": "<2-3 sentences>"}
+
+  - name: "Career Trajectory"
+    prompt: |
+      You are evaluating a software engineer applicant for a Senior SWE role.
+
+      Assess their CAREER TRAJECTORY AND GROWTH MINDSET based on the profile below.
+      Consider: progression of responsibilities, skill development over time,
+      willingness to take on new challenges, and evidence of continuous learning.
+
+      Score rubric:
+      1 = Stagnant career, minimal growth
+      2 = Modest growth, some new challenges taken on
+      3 = Steady growth, clear progression
+      4 = Strong trajectory, consistently seeks growth opportunities
+      5 = Exceptional: rapid growth, clear vision, takes on stretch goals
+
+      Return ONLY valid JSON: {"score": <integer 1-5>, "rationale": "<2-3 sentences>"}
